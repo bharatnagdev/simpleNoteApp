@@ -1,0 +1,23 @@
+<app-card-header title='Note List'></app-card-header>
+<div class="card-body">
+    <div class="float-right">
+        <button class="btn btn-primary" (click)="addNoteHandler()">Add Note
+        </button>
+    </div>
+    <div class="list-group">
+        <div *ngFor="let note of notes" class="list-group-item d-flex justify-content-between align-items-center"
+            [ngClass]="note.selected? 'active': ''">
+            <div class="col-md-4" (click)="viewNote(note, 'view')">{{note.title}}</div>
+            <div class="col-md-6" (click)="viewNote(note, 'view')">{{note.description}}</div>
+            <div class="col-md-2 float-right d-flex justify-content-between">
+                <button class="btn btn-primary" (click)="viewNote(note, 'edit')">Edit
+                </button>
+                <button class="btn btn-danger" (click)="viewNote(note, 'delete')">Delete
+                </button>
+            </div>
+        </div>
+        <div *ngIf="notes.length == 0">
+            No notes available!!! Please create one.
+        </div>
+    </div>
+</div>
